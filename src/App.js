@@ -1,7 +1,9 @@
+import Admin from "./components/Admin/Admin";
+
 function App() {
   return (
-    <div className="App">
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+    <div className="font-mono bg-gray-100">
+      <Admin />
     </div>
   );
 }
