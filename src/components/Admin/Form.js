@@ -35,13 +35,13 @@ const Form = () => {
 
   return (
     <div>
-      <h4 className="pt-8 text-2xl font-extrabold text-center">
+      <h4 className="form-header">
         Upload Product
       </h4>
 
       <div className="pt-6 pb-52 px-40">
         <form onSubmit={handleSubmit}>
-          <label className="block mb-1 text-lg font-semibold">
+          <label className="product-label">
             Product Name:
           </label>
           <input
@@ -49,26 +49,26 @@ const Form = () => {
             name="name"
             placeholder="Product Name"
             required
-            className="outline-none w-full py-3 pl-3 mb-3 border rounded-md"
+            className="product-input"
             value={productData.name}
             onChange={(e) =>
               setProductData({ ...productData, name: e.target.value })
             }
           />
-          <label className="block mb-1 text-lg font-semibold">
+          <label className="product-label">
             Product Details:
           </label>
           <textarea
             name="details"
             placeholder="Product Details"
             required
-            className="outline-none w-full py-3 pl-3 mb-3 border rounded-md"
+            className="product-input"
             value={productData.details}
             onChange={(e) =>
               setProductData({ ...productData, details: e.target.value })
             }
           />
-          <label className="block mb-1 text-lg font-semibold">
+          <label className="product-label">
             Product Price:
           </label>
           <input
@@ -76,13 +76,13 @@ const Form = () => {
             name="price"
             placeholder="Product Price"
             required
-            className="outline-none w-full py-3 pl-3 mb-3 border rounded-md"
+            className="product-input"
             value={productData.price}
             onChange={(e) =>
               setProductData({ ...productData, price: e.target.value })
             }
           />
-          <label className="block mb-1 text-lg font-semibold">
+          <label className="product-label">
             Product Image:
           </label>
           <div className="my-3">
@@ -96,7 +96,7 @@ const Form = () => {
           </div>
           <button
             type="submit"
-            className="text-center font-black mt-7 mb-7 py-3 border rounded-md border-blue-800 bg-blue-800 text-white w-full"
+            className="upload-btn"
           >
             UPLOAD
           </button>

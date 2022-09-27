@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.form-header {
+    @apply pt-8 text-2xl font-extrabold text-center;
+}
+
+.product-label {
+    @apply block mb-1 text-lg font-semibold;
+}
+
+.product-input {
+    @apply outline-none w-full py-3 pl-3 mb-3 border rounded-md;
+}
+
+.upload-btn {
+    @apply text-center font-black mt-7 mb-7 py-3 border rounded-md border-blue-800 bg-blue-800 text-white w-full;
+}
