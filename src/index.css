@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.app {
+    @apply font-mono bg-gray-100;
+}
+
+.product-form {
+    @apply pt-6 pb-52 px-40;
+}
+
 .form-header {
     @apply pt-8 text-2xl font-extrabold text-center;
 }
@@ -15,5 +23,5 @@
 }
 
 .upload-btn {
-    @apply text-center font-black mt-7 mb-7 py-3 border rounded-md border-blue-800 bg-blue-800 text-white w-full;
+    @apply text-center text-xl font-black mt-7 mb-7 py-3 border rounded-md border-blue-800 bg-blue-800 text-white w-full;
 }

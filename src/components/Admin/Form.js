@@ -29,7 +29,7 @@ const Form = () => {
     e.preventDefault();
 
     createProduct();
-    navigate("/admin-home");
+    navigate("/admin/dashboard");
     clear();
   };
 
@@ -39,7 +39,7 @@ const Form = () => {
         Upload Product
       </h4>
 
-      <div className="pt-6 pb-52 px-40">
+      <div className="product-form">
         <form onSubmit={handleSubmit}>
           <label className="product-label">
             Product Name:
