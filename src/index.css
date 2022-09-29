@@ -27,5 +27,57 @@
 }
 
 .card {
-    @apply bg-white rounded-md overflow-hidden shadow-md relative;
+    @apply bg-white rounded-md overflow-hidden shadow-md relative hover:shadow-lg;
+}
+
+.dashboard-header {
+    @apply flex justify-between items-center py-8 px-40;
+}
+
+.dashboard-logo {
+    @apply text-3xl font-extrabold;
+}
+
+.upload-products-btn {
+    @apply text-xl p-3 border-2 rounded-md border-red-500 bg-red-500 text-white;
+}
+
+.products {
+    @apply py-8 px-40;
+}
+
+.product {
+    @apply mt-8 grid grid-cols-3 gap-10;
+}
+
+.product-img {
+    @apply w-fit h-fit object-cover;
+}
+
+.product-info {
+    @apply m-4 border-b border-gray-300 pb-2;
+}
+
+.product-name {
+    @apply font-bold text-lg;
+}
+
+.product-details {
+    @apply block text-gray-500 text-base;
+}
+
+.product-price {
+    @apply font-bold text-xl;
+}
+
+.product-edit-remove-btns {
+    @apply m-4 flex justify-between items-center;
+}
+
+.product-edit-btn {
+    @apply font-bold text-center text-base p-2 border rounded border-blue-500 text-white bg-blue-500 hover:bg-blue-700 transition ease-in-out duration-500;
+}
+
+.product-remove-btn {
+    @apply font-bold text-center text-base p-2 border rounded border-red-500 text-white bg-red-500 hover:bg-red-700 transition ease-in-out duration-500;
 }
