@@ -25,3 +25,7 @@
 .upload-btn {
     @apply text-center text-xl font-black mt-7 mb-7 py-3 border rounded-md border-blue-800 bg-blue-800 text-white w-full;
 }
+
+.card {
+    @apply bg-white rounded-md overflow-hidden shadow-md relative;
+}
