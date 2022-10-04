@@ -57,7 +57,7 @@ const Modal = ({ visible, onClose }) => {
               //   }
             />
             <label className="product-label">Product Image:</label>
-            <div className="my-3">
+            <div className="filebase">
               <FileBase
                 type="file"
                 multiple={false}
