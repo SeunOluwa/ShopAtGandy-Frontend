@@ -35,15 +35,11 @@ const Form = () => {
 
   return (
     <div>
-      <h4 className="form-header">
-        Upload Product
-      </h4>
+      <h4 className="form-header">Upload Product</h4>
 
       <div className="product-form">
         <form onSubmit={handleSubmit}>
-          <label className="product-label">
-            Product Name:
-          </label>
+          <label className="product-label">Product Name:</label>
           <input
             type="text"
             name="name"
@@ -55,9 +51,7 @@ const Form = () => {
               setProductData({ ...productData, name: e.target.value })
             }
           />
-          <label className="product-label">
-            Product Details:
-          </label>
+          <label className="product-label">Product Details:</label>
           <textarea
             name="details"
             placeholder="Product Details"
@@ -68,9 +62,7 @@ const Form = () => {
               setProductData({ ...productData, details: e.target.value })
             }
           />
-          <label className="product-label">
-            Product Price:
-          </label>
+          <label className="product-label">Product Price:</label>
           <input
             type="text"
             name="price"
@@ -82,9 +74,7 @@ const Form = () => {
               setProductData({ ...productData, price: e.target.value })
             }
           />
-          <label className="product-label">
-            Product Image:
-          </label>
+          <label className="product-label">Product Image:</label>
           <div className="my-3">
             <FileBase
               type="file"
@@ -94,10 +84,7 @@ const Form = () => {
               }
             />
           </div>
-          <button
-            type="submit"
-            className="upload-btn"
-          >
+          <button type="submit" className="upload-btn">
             UPLOAD
           </button>
         </form>
