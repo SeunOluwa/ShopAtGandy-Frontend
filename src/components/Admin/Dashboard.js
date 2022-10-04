@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+import Modal from "./Modal";
+
 import { fetchProducts } from "../../api";
 
 const Dashboard = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [showMyModal, setShowMyModal] = useState(false);
+
+  const handleOnClose = () => setShowMyModal(false);
 
   const getProducts = async () => {
     setLoading(true);
@@ -21,6 +26,10 @@ const Dashboard = () => {
       setLoading(false);
       setError("Some error occured");
     }
+  };
+
+  const editProduct = () => {
+    setShowMyModal(true);
   };
 
   useEffect(() => {
@@ -57,7 +66,9 @@ const Dashboard = () => {
                   <span className="product-price">₦{product.price}</span>
                 </div>
                 <div className="product-edit-remove-btns">
-                  <button className="product-edit-btn">EDIT PRODUCT</button>
+                  <button className="product-edit-btn" onClick={editProduct}>
+                    EDIT PRODUCT
+                  </button>
                   <button className="product-remove-btn">REMOVE PRODUCT</button>
                 </div>
               </div>
@@ -65,6 +76,8 @@ const Dashboard = () => {
           </div>
         )}
       </div>
+
+      <Modal onClose={handleOnClose} visible={showMyModal} />
     </>
   );
 };
