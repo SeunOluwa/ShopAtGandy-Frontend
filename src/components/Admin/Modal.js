@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FileBase from "react-file-base64";
 
-const Modal = ({ visible, onClose }) => {
+const Modal = ({ visible, onClose, products, productId }) => {
+  const [productData, setProductData] = useState({
+    name: "",
+    details: "",
+    price: "",
+    image: "",
+  });
+  const product = products.find((p) => p._id === productId);
+
+  useEffect(() => {
+    if (product) setProductData(product);
+  }, [product]);
+
   const handleOnClose = (e) => {
     if (e.target.id === "container") onClose();
   };
@@ -28,10 +40,10 @@ const Modal = ({ visible, onClose }) => {
               placeholder="Product Name"
               required
               className="product-input"
-              //   value={productData.name}
-              //   onChange={(e) =>
-              //     setProductData({ ...productData, name: e.target.value })
-              //   }
+              value={productData.name}
+              onChange={(e) =>
+                setProductData({ ...productData, name: e.target.value })
+              }
             />
             <label className="product-label">Product Details:</label>
             <textarea
@@ -39,10 +51,10 @@ const Modal = ({ visible, onClose }) => {
               placeholder="Product Details"
               required
               className="product-input"
-              //   value={productData.details}
-              //   onChange={(e) =>
-              //     setProductData({ ...productData, details: e.target.value })
-              //   }
+              value={productData.details}
+              onChange={(e) =>
+                setProductData({ ...productData, details: e.target.value })
+              }
             />
             <label className="product-label">Product Price:</label>
             <input
@@ -51,19 +63,19 @@ const Modal = ({ visible, onClose }) => {
               placeholder="Product Price"
               required
               className="product-input"
-              //   value={productData.price}
-              //   onChange={(e) =>
-              //     setProductData({ ...productData, price: e.target.value })
-              //   }
+              value={productData.price}
+              onChange={(e) =>
+                setProductData({ ...productData, price: e.target.value })
+              }
             />
             <label className="product-label">Product Image:</label>
             <div className="filebase">
               <FileBase
                 type="file"
                 multiple={false}
-                // onDone={({ base64 }) =>
-                //   setProductData({ ...productData, image: base64 })
-                // }
+                onDone={({ base64 }) =>
+                  setProductData({ ...productData, image: base64 })
+                }
               />
             </div>
             <div className="update-close-btns">

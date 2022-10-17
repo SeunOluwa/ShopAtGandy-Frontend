@@ -10,14 +10,12 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [showMyModal, setShowMyModal] = useState(false);
-
-  const handleOnClose = () => setShowMyModal(false);
+  const [productId, setProductId] = useState(null);
 
   const getProducts = async () => {
     setLoading(true);
     try {
       const response = await fetchProducts();
-      console.log(response.data.products);
 
       setProducts(response.data.products);
       setLoading(false);
@@ -27,6 +25,8 @@ const Dashboard = () => {
       setError("Some error occured");
     }
   };
+
+  const handleOnClose = () => setShowMyModal(false);
 
   const editProduct = () => {
     setShowMyModal(true);
@@ -54,7 +54,11 @@ const Dashboard = () => {
         ) : (
           <div className="product">
             {products.map((product) => (
-              <div className="card" key={product._id}>
+              <div
+                className="card"
+                key={product._id}
+                onClick={() => setProductId(product._id)}
+              >
                 <img
                   src={product.image}
                   alt={product.name}
@@ -77,7 +81,12 @@ const Dashboard = () => {
         )}
       </div>
 
-      <Modal onClose={handleOnClose} visible={showMyModal} />
+      <Modal
+        onClose={handleOnClose}
+        visible={showMyModal}
+        products={products}
+        productId={productId}
+      />
     </>
   );
 };
