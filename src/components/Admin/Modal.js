@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import FileBase from "react-file-base64";
 
+import { editProduct } from "../../api";
+
 const Modal = ({ visible, onClose, products, productId }) => {
   const [productData, setProductData] = useState({
     name: "",
@@ -9,6 +11,25 @@ const Modal = ({ visible, onClose, products, productId }) => {
     image: "",
   });
   const product = products.find((p) => p._id === productId);
+
+  const updateProduct = async () => {
+    try {
+      await editProduct(productId, productData);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const clear = () => {
+    setProductData({ name: "", details: "", price: "", image: "" });
+  };
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+
+    updateProduct();
+    clear();
+  };
 
   useEffect(() => {
     if (product) setProductData(product);
@@ -32,7 +53,7 @@ const Modal = ({ visible, onClose, products, productId }) => {
         <h4 className="form-header">Edit Product</h4>
 
         <div className="edit-product-form">
-          <form>
+          <form onSubmit={handleUpdate}>
             <label className="product-label">Product Name:</label>
             <input
               type="text"
@@ -82,7 +103,7 @@ const Modal = ({ visible, onClose, products, productId }) => {
               <button className="close-modal-btn" onClick={closeModal}>
                 CLOSE
               </button>
-              <button className="update-product-btn">UPDATE</button>
+              <button type="submit" className="update-product-btn">UPDATE</button>
             </div>
           </form>
         </div>
