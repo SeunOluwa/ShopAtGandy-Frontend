@@ -35,7 +35,7 @@ const Modal = ({ visible, onClose, products, productId }) => {
     if (product) setProductData(product);
   }, [product]);
 
-  const handleOnClose = (e) => {
+  const handleOnCloseModal = (e) => {
     if (e.target.id === "container") onClose();
   };
 
@@ -48,7 +48,7 @@ const Modal = ({ visible, onClose, products, productId }) => {
   if (!visible) return null;
 
   return (
-    <div id="container" onClick={handleOnClose} className="modal">
+    <div id="container" onClick={handleOnCloseModal} className="modal">
       <div className="edit-product-modal">
         <h4 className="form-header">Edit Product</h4>
 

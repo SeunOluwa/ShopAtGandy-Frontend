@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import Modal from "./Modal";
 
-import { fetchProducts } from "../../api";
+import { fetchProducts, removeProduct } from "../../api";
 
 const Dashboard = () => {
   const [products, setProducts] = useState([]);
@@ -26,9 +26,17 @@ const Dashboard = () => {
     }
   };
 
+  const deleteProduct = async (id) => {
+    try {
+      await removeProduct(id);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleOnClose = () => setShowMyModal(false);
 
-  const editProduct = () => {
+  const editProductForm = () => {
     setShowMyModal(true);
   };
 
@@ -70,10 +78,15 @@ const Dashboard = () => {
                   <span className="product-price">₦{product.price}</span>
                 </div>
                 <div className="product-edit-remove-btns">
-                  <button className="product-edit-btn" onClick={editProduct}>
+                  <button className="product-edit-btn" onClick={editProductForm}>
                     EDIT PRODUCT
                   </button>
-                  <button className="product-remove-btn">REMOVE PRODUCT</button>
+                  <button
+                    className="product-remove-btn"
+                    onClick={() => deleteProduct(product._id)}
+                  >
+                    REMOVE PRODUCT
+                  </button>
                 </div>
               </div>
             ))}
