@@ -3,7 +3,7 @@ import FileBase from "react-file-base64";
 
 import { editProduct } from "../../api";
 
-const Modal = ({ visible, onClose, products, productId }) => {
+const Modal = ({ visible, onClose, products, productId, getProducts }) => {
   const [productData, setProductData] = useState({
     name: "",
     details: "",
@@ -15,10 +15,12 @@ const Modal = ({ visible, onClose, products, productId }) => {
   const updateProduct = async () => {
     try {
       await editProduct(productId, productData);
+
+      await getProducts();
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   const clear = () => {
     setProductData({ name: "", details: "", price: "", image: "" });
@@ -29,6 +31,7 @@ const Modal = ({ visible, onClose, products, productId }) => {
 
     updateProduct();
     clear();
+    onClose();
   };
 
   useEffect(() => {
@@ -103,7 +106,9 @@ const Modal = ({ visible, onClose, products, productId }) => {
               <button className="close-modal-btn" onClick={closeModal}>
                 CLOSE
               </button>
-              <button type="submit" className="update-product-btn">UPDATE</button>
+              <button type="submit" className="update-product-btn">
+                UPDATE
+              </button>
             </div>
           </form>
         </div>

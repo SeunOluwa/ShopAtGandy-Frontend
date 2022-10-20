@@ -29,6 +29,8 @@ const Dashboard = () => {
   const deleteProduct = async (id) => {
     try {
       await removeProduct(id);
+
+      await getProducts();
     } catch (error) {
       console.log(error);
     }
@@ -78,7 +80,10 @@ const Dashboard = () => {
                   <span className="product-price">₦{product.price}</span>
                 </div>
                 <div className="product-edit-remove-btns">
-                  <button className="product-edit-btn" onClick={editProductForm}>
+                  <button
+                    className="product-edit-btn"
+                    onClick={editProductForm}
+                  >
                     EDIT PRODUCT
                   </button>
                   <button
@@ -99,6 +104,7 @@ const Dashboard = () => {
         visible={showMyModal}
         products={products}
         productId={productId}
+        getProducts={getProducts}
       />
     </>
   );
